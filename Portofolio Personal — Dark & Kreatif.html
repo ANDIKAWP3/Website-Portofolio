@@ -1,0 +1,1119 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portofolio personal kreatif." />
+    <title>Portofolio — Nama Kamu</title>
+    <style>
+      :root {
+        --site-primary: #d7ff64;
+        --site-on-primary: #11130c;
+        --site-secondary: #24251f;
+        --site-on-secondary: #f2f2e9;
+        --site-background: #10110f;
+        --site-on-background: #f4f2eb;
+        --site-font-body:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        --site-font-heading:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        --site-heading-scale: 1;
+        --site-spacing-scale: 1;
+        --site-radius-scale: 1;
+        --site-decoration-opacity: 1;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: light-dark(#f4f2eb, var(--site-background));
+        color: light-dark(#171813, var(--site-on-background));
+        font-family: var(--site-font-body);
+        line-height: 1.5;
+      }
+
+      .app {
+        background-color: var(--site-background);
+        color: var(--site-on-background);
+        min-height: 100vh;
+        overflow: hidden;
+        border-radius: 0;
+        position: relative;
+      }
+
+      .wrap {
+        width: min(1120px, calc(100% - 44px));
+        margin: auto;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 26px 0;
+        border-bottom: 1px solid #ffffff20;
+      }
+
+      .brand {
+        font-weight: 800;
+        letter-spacing: -0.06em;
+        font-size: 1.1rem;
+      }
+
+      .brand span {
+        color: var(--site-primary);
+      }
+
+      nav {
+        display: flex;
+        gap: 25px;
+      }
+
+      nav a,
+      .text-link {
+        color: #b8b9ae;
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: color 0.2s;
+      }
+
+      nav a:hover,
+      .text-link:hover {
+        color: var(--site-primary);
+      }
+
+      .availability {
+        font-size: 0.76rem;
+        color: #c8c9be;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--site-primary);
+        box-shadow: 0 0 12px #d7ff6480;
+      }
+
+      .hero {
+        padding: 86px 0 78px;
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 45px;
+        align-items: center;
+        position: relative;
+      }
+
+      .eyebrow {
+        color: var(--site-primary);
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 0.72rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .eyebrow:before {
+        content: "";
+        width: 24px;
+        height: 1px;
+        background: var(--site-primary);
+      }
+
+      h1 {
+        font-size: clamp(3.4rem, 8vw, 7rem);
+        line-height: 0.91;
+        letter-spacing: -0.085em;
+        margin: 23px 0 25px;
+        font-weight: 800;
+      }
+
+      h1 em {
+        font-style: normal;
+        color: var(--site-primary);
+      }
+
+      .intro {
+        max-width: 500px;
+        color: #b7b8ad;
+        font-size: 1.05rem;
+        line-height: 1.8;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 13px 18px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.86rem;
+        border: 1px solid #ffffff35;
+        color: #f5f4ed;
+        transition:
+          transform 0.2s,
+          background 0.2s;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn.primary {
+        background: var(--site-primary);
+        color: #12140c;
+        border-color: var(--site-primary);
+      }
+
+      .portrait-wrap {
+        position: relative;
+        max-width: 390px;
+        width: 100%;
+        justify-self: end;
+      }
+
+      .portrait {
+        aspect-ratio: 4/4.7;
+        background: linear-gradient(145deg, #31342b, #171914 65%);
+        border-radius: 48% 48% 18px 18px;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid #ffffff1c;
+        display: grid;
+        place-items: center;
+      }
+
+      .portrait:before {
+        content: "";
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        border: 1px solid #d7ff6445;
+        border-radius: 50%;
+        top: 12%;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow:
+          0 0 0 28px #d7ff6408,
+          0 0 0 56px #d7ff6405;
+      }
+
+      .portrait svg {
+        width: 82%;
+        height: 82%;
+        position: relative;
+        z-index: 1;
+      }
+
+      .portrait-label {
+        position: absolute;
+        right: -15px;
+        bottom: 28px;
+        background: var(--site-primary);
+        color: #15170f;
+        padding: 12px 15px;
+        font-weight: 800;
+        font-size: 0.8rem;
+        transform: rotate(-4deg);
+        box-shadow: 5px 5px 0 #10110f;
+      }
+
+      .hero-note {
+        position: absolute;
+        left: 0;
+        bottom: 28px;
+        color: #77796e;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+      }
+
+      .section {
+        padding: 74px 0;
+        border-top: 1px solid #ffffff1b;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 24px;
+        margin-bottom: 32px;
+      }
+
+      .kicker {
+        font-size: 0.7rem;
+        letter-spacing: 0.17em;
+        color: var(--site-primary);
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      .section h2 {
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        line-height: 1;
+        letter-spacing: -0.06em;
+        margin: 10px 0 0;
+      }
+
+      .muted {
+        color: #a5a69b;
+        max-width: 420px;
+        font-size: 0.9rem;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 55px;
+      }
+
+      .about-copy {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: #d0d0c7;
+      }
+
+      .about-copy strong {
+        color: #fff;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .stat {
+        background: #1a1b17;
+        border: 1px solid #ffffff13;
+        padding: 22px;
+        border-radius: 14px;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 2.2rem;
+        letter-spacing: -0.07em;
+        color: var(--site-primary);
+      }
+
+      .stat span {
+        color: #a5a69b;
+        font-size: 0.82rem;
+      }
+
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .skill {
+        border: 1px solid #ffffff25;
+        background: #1b1c18;
+        padding: 13px 17px;
+        border-radius: 999px;
+        color: #e7e7dd;
+        font-size: 0.9rem;
+      }
+
+      .skill b {
+        color: var(--site-primary);
+        font-weight: 500;
+        margin-right: 8px;
+      }
+
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .project {
+        border: 1px solid #ffffff1b;
+        border-radius: 18px;
+        overflow: hidden;
+        background: #171814;
+        transition:
+          transform 0.25s,
+          border-color 0.25s;
+      }
+
+      .project:hover {
+        transform: translateY(-4px);
+        border-color: #d7ff6470;
+      }
+
+      .project-art {
+        height: 220px;
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .art-one {
+        background: #d7ff64;
+        color: #171813;
+      }
+
+      .art-two {
+        background: #34382d;
+        color: #f2f2e9;
+      }
+
+      .art-three {
+        background: #b6a7ff;
+        color: #171813;
+      }
+
+      .art-four {
+        background: #d9c8ad;
+        color: #171813;
+      }
+
+      .mock-window {
+        width: 90%;
+        height: 150px;
+        border-radius: 9px;
+        background: #f5f3e9;
+        box-shadow: 0 16px 40px #0003;
+        padding: 12px;
+        color: #171813;
+        transform: rotate(-3deg);
+      }
+
+      .mock-bar {
+        height: 9px;
+        border-bottom: 1px solid #17181325;
+        display: flex;
+        gap: 4px;
+        margin-bottom: 13px;
+      }
+
+      .mock-bar i {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #aaa;
+      }
+
+      .mock-title {
+        font-size: 1.35rem;
+        letter-spacing: -0.06em;
+        font-weight: 850;
+        line-height: 1;
+      }
+
+      .mock-blocks {
+        display: flex;
+        gap: 6px;
+        margin-top: 13px;
+      }
+
+      .mock-blocks span {
+        height: 45px;
+        background: #d9dfcc;
+        flex: 1;
+        border-radius: 4px;
+      }
+
+      .mock-blocks span:first-child {
+        background: #d7ff64;
+      }
+
+      .poster {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 900;
+        letter-spacing: -0.09em;
+        line-height: 0.83;
+        transform: rotate(-5deg);
+      }
+
+      .poster small {
+        font-size: 0.65rem;
+        letter-spacing: 0.15em;
+        display: block;
+        margin-top: 18px;
+      }
+
+      .project-info {
+        padding: 20px 22px 23px;
+      }
+
+      .project-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .project h3 {
+        margin: 0;
+        font-size: 1.15rem;
+        letter-spacing: -0.04em;
+      }
+
+      .year {
+        font-size: 0.75rem;
+        color: #929488;
+      }
+
+      .project-info p {
+        color: #a9aa9f;
+        font-size: 0.86rem;
+        margin: 10px 0 15px;
+      }
+
+      .tags {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+      }
+
+      .tags span {
+        font-size: 0.68rem;
+        color: #d3d4ca;
+        background: #ffffff0c;
+        border-radius: 5px;
+        padding: 5px 8px;
+      }
+
+      .timeline {
+        border-left: 1px solid #42443a;
+        margin-left: 7px;
+        padding-left: 28px;
+        display: grid;
+        gap: 30px;
+      }
+
+      .job {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px 20px;
+      }
+
+      .job:before {
+        content: "";
+        position: absolute;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--site-primary);
+        left: -33px;
+        top: 7px;
+        box-shadow: 0 0 0 5px #d7ff6415;
+      }
+
+      .job h3 {
+        margin: 0;
+        font-size: 1.08rem;
+      }
+
+      .job .place {
+        color: #a8a99e;
+        font-size: 0.87rem;
+      }
+
+      .job .date {
+        color: var(--site-primary);
+        font-size: 0.77rem;
+      }
+
+      .job p {
+        grid-column: 1/-1;
+        color: #a5a69b;
+        font-size: 0.9rem;
+        margin: 0;
+        max-width: 680px;
+      }
+
+      .contact-box {
+        background: var(--site-primary);
+        color: #15170f;
+        padding: clamp(28px, 6vw, 64px);
+        border-radius: 22px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: end;
+        gap: 24px;
+      }
+
+      .contact-box .kicker {
+        color: #4b5726;
+      }
+
+      .contact-box h2 {
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        max-width: 650px;
+        margin: 13px 0 18px;
+      }
+
+      .contact-box p {
+        max-width: 480px;
+        color: #41472f;
+      }
+
+      .contact-box .btn {
+        background: #15170f;
+        color: #f4f2eb;
+        border-color: #15170f;
+        white-space: nowrap;
+      }
+
+      .contact-details {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+
+      .contact-details a {
+        color: #24271b;
+        font-weight: 700;
+        font-size: 0.86rem;
+        text-decoration: none;
+        border-bottom: 1px solid #59613c;
+        padding-bottom: 3px;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 25px 0 30px;
+        color: #818377;
+        font-size: 0.76rem;
+      }
+
+      .footer a {
+        color: #c3c4b9;
+        text-decoration: none;
+      }
+
+      .reveal {
+        animation: rise 0.7s both;
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 720px) {
+        .wrap {
+          width: calc(100% - 32px);
+        }
+
+        .topbar {
+          padding: 20px 0;
+        }
+
+        .availability {
+          display: none;
+        }
+
+        nav {
+          gap: 13px;
+        }
+
+        nav a {
+          font-size: 0.75rem;
+        }
+
+        .hero {
+          padding: 55px 0 70px;
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+
+        .hero h1 {
+          font-size: clamp(3.5rem, 17vw, 6rem);
+        }
+
+        .portrait-wrap {
+          justify-self: center;
+          width: min(78%, 320px);
+        }
+
+        .hero-note {
+          bottom: 20px;
+        }
+
+        .section {
+          padding: 55px 0;
+        }
+
+        .section-head {
+          align-items: start;
+          flex-direction: column;
+        }
+
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 25px;
+        }
+
+        .projects {
+          grid-template-columns: 1fr;
+        }
+
+        .project-art {
+          height: 200px;
+        }
+
+        .contact-box {
+          grid-template-columns: 1fr;
+          align-items: start;
+        }
+
+        .contact-box .btn {
+          justify-self: start;
+        }
+
+        .job {
+          grid-template-columns: 1fr;
+        }
+
+        .job .date {
+          grid-row: 2;
+        }
+
+        .job p {
+          grid-column: 1;
+        }
+
+        .footer {
+          flex-direction: column;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .reveal {
+          animation: none;
+        }
+
+        *,
+        *:before,
+        *:after {
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="app" id="home">
+      <div class="wrap">
+        <header class="topbar">
+          <a
+            class="brand"
+            href="#home"
+            style="text-decoration: none; color: inherit"
+            >folio<span>.</span></a
+          >
+          <nav aria-label="Navigasi utama">
+            <a href="#about">Tentang</a><a href="#skills">Skill</a
+            ><a href="#projects">Proyek</a><a href="#contact">Kontak</a>
+          </nav>
+          <div class="availability">
+            <span class="dot"></span> Terbuka untuk peluang
+          </div>
+        </header>
+        <section class="hero">
+          <div class="reveal">
+            <div class="eyebrow">Halo, aku adalah</div>
+            <h1>Nama<br /><em>Kamu.</em></h1>
+            <p class="intro">
+              [Mahasiswa / profesi kreatif] yang suka mengubah ide menjadi karya
+              digital yang berguna, menarik, dan punya karakter.
+            </p>
+            <div class="hero-actions">
+              <a class="btn primary" href="#projects">Lihat karya ↘</a
+              ><a class="btn" href="#contact">Hubungi aku</a>
+            </div>
+          </div>
+          <div class="portrait-wrap reveal">
+            <div class="portrait">
+              <svg
+                viewBox="0 0 300 350"
+                role="img"
+                aria-label="Ilustrasi placeholder foto profil"
+              >
+                <defs>
+                  <linearGradient id="shirt" x1="0" y1="0" x2="1" y2="1">
+                    <stop stop-color="#d7ff64" />
+                    <stop offset="1" stop-color="#839e37" />
+                  </linearGradient>
+                </defs>
+                <ellipse
+                  cx="150"
+                  cy="315"
+                  rx="100"
+                  ry="16"
+                  fill="#000"
+                  opacity=".22"
+                />
+                <path
+                  d="M54 310 Q58 218 110 206 L190 206 Q242 218 246 310Z"
+                  fill="url(#shirt)"
+                />
+                <path
+                  d="M112 197 L111 230 Q150 265 189 230 L188 197Z"
+                  fill="#b97850"
+                />
+                <ellipse cx="150" cy="133" rx="63" ry="79" fill="#c98e68" />
+                <path
+                  d="M87 135 Q69 67 128 52 Q195 31 216 98 L212 138 Q199 105 181 89 Q146 113 98 106Z"
+                  fill="#24241e"
+                />
+                <path
+                  d="M103 137 Q119 130 132 138 M168 138 Q184 130 197 137"
+                  fill="none"
+                  stroke="#38271f"
+                  stroke-width="5"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M137 170 Q151 179 166 169"
+                  fill="none"
+                  stroke="#754631"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M128 213 L150 245 L173 213"
+                  fill="#f1f0e8"
+                  opacity=".8"
+                />
+                <path
+                  d="M54 310 L73 254 L105 310 M246 310 L227 254 L195 310"
+                  fill="#9fbd45"
+                />
+              </svg>
+            </div>
+            <div class="portrait-label">KREATIF BY NATURE ✳</div>
+          </div>
+          <div class="hero-note">PORTOFOLIO PERSONAL · 2026</div>
+        </section>
+        <section class="section" id="about">
+          <div class="section-head">
+            <div>
+              <div class="kicker">01 / Tentang aku</div>
+              <h2>Cerita singkat.</h2>
+            </div>
+            <p class="muted">
+              Sedikit tentang siapa aku, apa yang aku pelajari, dan hal yang
+              ingin aku ciptakan.
+            </p>
+          </div>
+          <div class="about-grid">
+            <p class="about-copy">
+              Hai! Aku <strong>Nama Kamu</strong>, seorang [mahasiswa / desainer
+              / developer] yang tertarik pada
+              <strong>teknologi, desain, dan pemecahan masalah.</strong> Aku
+              senang belajar hal baru, bekerja bareng tim, dan membuat sesuatu
+              yang bukan cuma terlihat bagus, tapi juga bermanfaat.<br /><br />Saat
+              ini aku sedang fokus mengembangkan kemampuan di bidang [bidang
+              yang kamu minati].
+            </p>
+            <div class="stats">
+              <div class="stat">
+                <strong>03+</strong><span>Proyek yang dikerjakan</span>
+              </div>
+              <div class="stat">
+                <strong>02</strong><span>Tahun terus belajar</span>
+              </div>
+              <div class="stat">
+                <strong>∞</strong><span>Ide yang ingin dicoba</span>
+              </div>
+              <div class="stat">
+                <strong>01</strong><span>Langkah setiap hari</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section" id="skills">
+          <div class="section-head">
+            <div>
+              <div class="kicker">02 / Yang bisa aku lakukan</div>
+              <h2>Tools & skills.</h2>
+            </div>
+            <p class="muted">
+              Kemampuan yang aku pakai untuk menerjemahkan ide menjadi sesuatu
+              yang nyata.
+            </p>
+          </div>
+          <div class="skills">
+            <span class="skill"><b>01</b> HTML & CSS</span
+            ><span class="skill"><b>02</b> JavaScript</span
+            ><span class="skill"><b>03</b> UI/UX Design</span
+            ><span class="skill"><b>04</b> Figma</span
+            ><span class="skill"><b>05</b> Problem Solving</span
+            ><span class="skill"><b>06</b> Teamwork</span
+            ><span class="skill"><b>07</b> Presentasi</span>
+          </div>
+        </section>
+        <section class="section" id="projects">
+          <div class="section-head">
+            <div>
+              <div class="kicker">03 / Pengalaman organisasi</div>
+              <h2>Momen di balik cerita.</h2>
+            </div>
+            <p class="muted">
+              Dokumentasi kegiatan, kerja tim, kepanitiaan, dan momen berharga
+              selama aktif berorganisasi. Ganti setiap panel dengan foto
+              pengalamanmu sendiri.
+            </p>
+          </div>
+          <div class="projects">
+            <article class="project">
+              <div
+                class="project-art art-one"
+                style="
+                  min-height: 220px;
+                  background: linear-gradient(
+                    135deg,
+                    #37452a,
+                    #a4bb6b 52%,
+                    #22271d
+                  );
+                  flex-direction: column;
+                  gap: 10px;
+                "
+              >
+                <span style="font-size: 3rem">✳</span
+                ><strong style="font-size: 1.1rem; letter-spacing: 0.08em"
+                  >TEAMWORK</strong
+                ><span style="font-size: 0.75rem"
+                  >FOTO KEGIATAN ORGANISASI</span
+                >
+              </div>
+              <div class="project-info">
+                <div class="project-top">
+                  <h3>01. Kegiatan Organisasi</h3>
+                  <span class="year">2026</span>
+                </div>
+                <p>
+                  Tambahkan foto kegiatan bersama anggota dan ceritakan peranmu
+                  di dalamnya.
+                </p>
+                <div class="tags">
+                  <span>Kolaborasi</span><span>Teamwork</span>
+                </div>
+              </div>
+            </article>
+            <article class="project">
+              <div
+                class="project-art art-two"
+                style="
+                  min-height: 220px;
+                  background: linear-gradient(
+                    145deg,
+                    #24251f,
+                    #676b56 55%,
+                    #b8a77f
+                  );
+                  flex-direction: column;
+                  gap: 10px;
+                "
+              >
+                <span style="font-size: 3rem">◉</span
+                ><strong style="font-size: 1.1rem; letter-spacing: 0.08em"
+                  >LEADERSHIP</strong
+                ><span style="font-size: 0.75rem">FOTO RAPAT / DISKUSI</span>
+              </div>
+              <div class="project-info">
+                <div class="project-top">
+                  <h3>02. Rapat & Diskusi</h3>
+                  <span class="year">2026</span>
+                </div>
+                <p>
+                  Dokumentasikan proses bertukar ide, menyusun strategi, dan
+                  mengambil keputusan bersama.
+                </p>
+                <div class="tags">
+                  <span>Komunikasi</span><span>Kepemimpinan</span>
+                </div>
+              </div>
+            </article>
+            <article class="project">
+              <div
+                class="project-art art-three"
+                style="
+                  min-height: 220px;
+                  background: linear-gradient(
+                    135deg,
+                    #5c527c,
+                    #b6a7ff 55%,
+                    #39334d
+                  );
+                  flex-direction: column;
+                  gap: 10px;
+                "
+              >
+                <span style="font-size: 3rem">✦</span
+                ><strong style="font-size: 1.1rem; letter-spacing: 0.08em"
+                  >EVENT DAY</strong
+                ><span style="font-size: 0.75rem"
+                  >FOTO ACARA / KEPANITIAAN</span
+                >
+              </div>
+              <div class="project-info">
+                <div class="project-top">
+                  <h3>03. Acara & Kepanitiaan</h3>
+                  <span class="year">2025</span>
+                </div>
+                <p>
+                  Masukkan momen saat mempersiapkan atau menjalankan acara,
+                  beserta kontribusimu.
+                </p>
+                <div class="tags">
+                  <span>Event</span><span>Problem Solving</span>
+                </div>
+              </div>
+            </article>
+            <article class="project">
+              <div
+                class="project-art art-four"
+                style="
+                  min-height: 220px;
+                  background: linear-gradient(
+                    135deg,
+                    #9e8b70,
+                    #d9c8ad 55%,
+                    #514536
+                  );
+                  flex-direction: column;
+                  gap: 10px;
+                "
+              >
+                <span style="font-size: 3rem">↗</span
+                ><strong style="font-size: 1.1rem; letter-spacing: 0.08em"
+                  >SHARED SUCCESS</strong
+                ><span style="font-size: 0.75rem">FOTO PENCAPAIAN TIM</span>
+              </div>
+              <div class="project-info">
+                <div class="project-top">
+                  <h3>04. Pencapaian Tim</h3>
+                  <span class="year">2025</span>
+                </div>
+                <p>
+                  Tampilkan dokumentasi hasil kerja, penghargaan, atau momen
+                  penutupan kegiatan.
+                </p>
+                <div class="tags">
+                  <span>Pencapaian</span><span>Organisasi</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+        <section class="section" id="experience">
+          <div class="section-head">
+            <div>
+              <div class="kicker">04 / Perjalanan</div>
+              <h2>Pengalaman & proses.</h2>
+            </div>
+            <p class="muted">
+              Pengalaman kerja, organisasi, kepanitiaan, magang, atau perjalanan
+              belajar.
+            </p>
+          </div>
+          <div class="timeline">
+            <div class="job">
+              <div>
+                <h3>[Posisi / Peran] — [Nama organisasi]</h3>
+                <div class="place">Organisasi / Kampus / Perusahaan</div>
+              </div>
+              <div class="date">2025 — Sekarang</div>
+              <p>
+                Jelaskan kontribusi dan tanggung jawab utama, misalnya mengelola
+                tim, merancang materi, atau menyelesaikan proyek bersama.
+              </p>
+            </div>
+            <div class="job">
+              <div>
+                <h3>[Pengalaman sebelumnya]</h3>
+                <div class="place">Proyek / Kepanitiaan / Magang</div>
+              </div>
+              <div class="date">2024 — 2025</div>
+              <p>
+                Ceritakan hal yang kamu pelajari dan hasil yang bisa ditunjukkan
+                secara singkat dan konkret.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="section" id="contact">
+          <div class="contact-box">
+            <div>
+              <div class="kicker">05 / Mari terhubung</div>
+              <h2>Punya ide? Kita bikin sesuatu.</h2>
+              <p>
+                Terbuka untuk kolaborasi, kesempatan baru, atau sekadar ngobrol
+                soal ide kreatif.
+              </p>
+              <div class="contact-details">
+                <a href="mailto:emailkamu@example.com">Email ↗</a
+                ><a href="https://github.com/" target="_blank" rel="noreferrer"
+                  >GitHub ↗</a
+                ><a
+                  href="https://linkedin.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                  >LinkedIn ↗</a
+                >
+              </div>
+            </div>
+            <a
+              class="btn"
+              href="mailto:emailkamu@example.com?subject=Hai%20Nama%20Kamu"
+              >Kirim pesan ↗</a
+            >
+          </div>
+        </section>
+        <footer class="footer">
+          <span>© 2026 Nama Kamu. Dibuat dengan rasa ingin tahu.</span
+          ><a href="#home">Kembali ke atas ↑</a>
+        </footer>
+      </div>
+    </main>
+  </body>
+</html>
